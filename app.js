@@ -79,15 +79,7 @@ var octopus = {
     // open admin view
     openAdmin: function() {
         if (model.adminView == true) {
-        var adminForm = document.getElementById('adminForm');
-        var form = document.getElementById('updateForm');
-        var catName = form.elements['catName'];
-        var catImage = form.elements['catImage'];
-        var catClicks = form.elements['catClicks'];
-        catName.placeholder = model.currentCat.name;
-        catImage.placeholder = model.currentCat.image;
-        catClicks.placeholder = model.currentCat.count;
-        adminForm.classList.remove('closed');
+            adminForm.classList.remove('closed');
         }
     },
 
@@ -117,10 +109,13 @@ var octopus = {
 
         catView.render();
         catListView.render();
-
-        catName.placeholder = model.currentCat.name;
-        catImage.placeholder = model.currentCat.image;
-        catClicks.placeholder = model.currentCat.count;
+        
+        catName.value = '';
+        catImage.value = '';
+        catClicks.value = '';
+        octopus.adminVisible();
+        octopus.closeAdmin();
+        
     }
 };
 
@@ -187,6 +182,13 @@ var catListView = {
                 return function() {
                     octopus.setCurrentCat(catCopy);
                     catView.render();
+                    var form = document.getElementById('updateForm');
+                    var catFormName = form.elements['catName'];
+                    var catImage = form.elements['catImage'];
+                    var catClicks = form.elements['catClicks'];
+                    catFormName.placeholder = model.currentCat.name;
+                    catImage.placeholder = model.currentCat.image;
+                    catClicks.placeholder = model.currentCat.count;
                 };
             })(cat));
 
@@ -210,10 +212,10 @@ var adminView = {
 
         saveBtn.addEventListener('click', function() {
             octopus.updateCat();
+            octopus.closeAdmin();
         });
 
         cancelLink.addEventListener('click', function() {
-            
             var form = document.getElementById('updateForm');
             catName = form.elements['catName'];
             catImage = form.elements['catImage'];
