@@ -40,21 +40,6 @@ img#cat-img {
     max-width: 90%;
 }
 
-/* Display the columns below each other instead of side by side on small screens */
-@media screen and (max-width: 650px) {
-    .column {
-        width: 98%;
-        display: block;
-    }
-
-    div#first {
-        margin-left: 0;
-    }
-
-    .column {
-        margin-left: 0;
-    }
-}
 
 /* Add some shadows to create a card effect */
 .card {
@@ -125,4 +110,51 @@ p {
 /* Create an active/current "tab button" class */
 .tab li.active {
     background-color: #ccc;
+}
+
+
+/* Display the columns below each other instead of side by side on small screens */
+@media screen and (max-width: 700px) {
+    .column {
+        width: 98%;
+        display: block;
+    }
+
+    div#first {
+        margin-left: 0;
+    }
+
+    .column {
+        margin-left: 0;
+    }
+
+    .tab {
+        width: 94%;
+        margin-bottom: 4%;
+        height: 80vh;
+        margin-left: 3%;
+    }
+
+    h2 {
+        font-size: 8vw;
+    }
+
+    body {
+        font-size: 2em;
+    }
+
+    .container {
+        padding-left: 1em;
+    }
+    
+    input[type="text"] {
+        font-size: 1em;
+        max-width: 11em;
+    }
+
+    button {
+        width: 4em;
+        height: 3em;
+        font-size: .6em;
+    }
 }
